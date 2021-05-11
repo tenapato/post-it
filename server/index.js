@@ -7,12 +7,12 @@ import postRoutes from  './routes/posts.js';
 
 const app = express();
 
-app.use('/posts', postRoutes);  //Every route start with posts
 
 app.use(bodyParser.json({ limit: "30mb", extended: true}));  //set a limit for file size
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
 
+app.use('/posts', postRoutes);  //Every route start with posts
 //Connect to MongoDB Atlas
 
 const CONNECTION_URL = "mongodb+srv://proyectofinal_123:proyectofinal_123@cluster0.ofrja.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
