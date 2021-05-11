@@ -10,12 +10,16 @@ const Posts = () =>{
 
     console.log(posts);
     return (
-        <>
-            <h1>POSTS</h1>
-            <Post/>
-            <Post/>
-            <Post/>
-        </>
+        !posts.length ? <CircularProgress/>: ( //if posts length = 0, then show a circular progress, else show the posts
+            <Grid className={classes.container} container alignItems = "stretch" spacing ={3}>
+                {posts.map((post) => ( //Send each retrived post to a post component
+                    <Grid key = {post.id} item xs={12} sm = {6}>
+                        <Post post = {post}/>  
+                    </Grid>
+                ))}
+            </Grid>
+        )
+         
     );
 }
 
