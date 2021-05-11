@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Paper} from '@material-ui/core';
 import FileBase from 'react-file-base64';
+import { useDispatch } from 'react-redux';
 import useStyles from './styles';
+import { createPost } from '../../actions/posts';
+
+
 const Form = () =>{
     const [postData, setPostData] = useState({ //Get data to add to a post
         author: '', title: '', message: '', tags: '', selectedFile: '',
     });
     const classes = useStyles();
+    const dispatch = useDispatch();
 
-    const handleSubmit = () =>{
-
-    };
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        dispatch(createPost(postData));
+    }
 
     const clear = () =>{
 
-    };
+    }
     return (
         //<h1 className = {classes.form}>FORM</h1>
         <Paper className = {classes.paper}>
