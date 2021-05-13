@@ -2,7 +2,7 @@
 // Simplifies the code if needed to to be upgraded
 
 import PostMessage from '../models/postMessage.js';  //import the schema for the posts
-
+import mongoose from 'mongoose';
 
 export const getPosts = async (req, res) => {  //Fetching all existing posts
     //res.send('Working!');
@@ -27,4 +27,18 @@ export const createPost = async (req, res) => {
     } catch (error) {  
         res.status(409).json({message : error.message}); //creation error
     }
+}
+
+
+export const updatePost = async (req, res) => {
+    const { id: _id } = req.params; 
+    const post = req.body; //Post Data
+
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+        return res.status(404).send('No post with that id');
+    }
+
+    const updatePost = await PostMessage.findByIdAndUpdate(_id, post, {new:true});
+
+    res.json(updatePost);
 }
