@@ -5,10 +5,13 @@ export default makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
+      
     },
   },
   paper: {
     padding: theme.spacing(2),
+    color: 'black',
+    backgroundColor: 'white'
   },
   form: {
     display: 'flex',
@@ -18,12 +21,15 @@ export default makeStyles((theme) => ({
   fileInput: {
     width: '97%',
     margin: '10px 0',
+    color: 'red',
   },
   buttonSubmit: {
     marginBottom: 10,
+    color: 'white',
+    backgroundColor: '#FFB20D'
   },
-  palette: {
-    primary: green,
-    secondary: red,
-  }
+  buttonClear: {
+    backgroundColor: '#DD8614',
+  },
+  
 }));
