@@ -3,7 +3,7 @@ export default (posts = [], action) => {
         case 'DELETE':
             return posts.filter((post) => post._id !== action.payload );
         case 'UPDATE':
-            return posts.map((post) => post._id === action.payload._id ? action.payload: post)  //matrhcing post array and changing it
+            return posts.map((post) => post._id === action.payload._id ? action.payload: post)  //matching post array and changing it
         case 'FETCH_ALL':
             return action.payload;
         case 'CREATE':
