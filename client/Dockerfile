@@ -2,12 +2,14 @@ FROM node:14
 
 WORKDIR /client
 
-ENV PATH = "./node_modules/.bin:$PATH"
-
-COPY . .
+COPY package.json .
 
 RUN npm install
 
-RUN npm run build
+COPY . .
+
+EXPOSE 3000
+
+# RUN npm run build /use this whe deploying
 
 CMD ["npm", "start"]
