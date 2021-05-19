@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+    server:
+      build:
+        context: ./server
+        dockerfile: Dockerfile
+      image: myapp-server
+      container_name: myapp-node-server
+      command: npm start
+      ports:
+        - "5000:5000"
+    client:
+      build:
+        context: ./client
+        dockerfile: Dockerfile
+      image: myapp-client
+      stdin_open: true
+      container_name: myapp-react-client
+      command: npm start
+      depends_on:
+        - server
+      ports:
+        - "3000:3000"
+
+    
