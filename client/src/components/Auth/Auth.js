@@ -5,11 +5,17 @@ import useStyles from './styles';
 import Input from './Input';
 import {GoogleLogin} from 'react-google-login';
 import Icon from './icon'
+import {useDispatch} from 'react-redux';
+import { useHistory} from 'react-router-dom';
+
+
+
 export const Auth = () => {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setisSignup] = useState(false);
-
+    const dispatch = useDispatch();
+    const history = useHistory();
     const handleShowPassword = () => {
 
     };
@@ -27,7 +33,16 @@ export const Auth = () => {
     };
 
     const googleSuccess = async (res) => {
-        console.log(res);
+        //console.log(res);
+        const result = res?.profileObj;
+        const token = res?.tokenId;
+
+        try {
+            dispatch( {type: 'AUTH', data: {result, token }} );
+            history.push('/');  // Redicts to homepage after login
+        } catch (error) {
+            console.log(error);
+        }
     };
     const googleFailure = (error) => {
         console.log(error);
