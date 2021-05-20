@@ -76,7 +76,7 @@ export const Auth = () => {
                     <GoogleLogin 
                         clientId="461483645259-gtbgfn428ejtv6s791hmte7lbr1676og.apps.googleusercontent.com"
                         render={(renderProps) => (
-                            <Button className={classes.googleButton} color = 'primary' fullWidth onClick={renderProps.onClick} disable ={renderProps.disabled} startIcon={<Icon/>} variant = "contained">Sign in with Google</Button>
+                            <Button className={classes.googleButton} color = 'primary' fullWidth onClick={renderProps.onClick} disable ={renderProps.disabled} startIcon={<Icon/>} variant = "contained">{isSignup ? 'Sign up with Google' :'Sign in with Google' }</Button>
                         )}
                         onSuccess={googleSuccess}
                         onFailure={googleFailure}
