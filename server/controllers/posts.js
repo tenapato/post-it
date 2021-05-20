@@ -7,7 +7,7 @@ import mongoose from 'mongoose';
 export const getPosts = async (req, res) => {  //Fetching all existing posts
     //res.send('Working!');
     try {
-        const postMessages = await PostMessage.find(); //it is an asynchronous actio
+        const postMessages = await PostMessage.find(); //it is an asynchronous action
         console.log(postMessages); 
 
         res.status(200).json(postMessages);  //if everything went fine
