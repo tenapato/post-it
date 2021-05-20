@@ -1,41 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { Container } from '@material-ui/core';
 
-import { getPosts } from './actions/posts';
-import Posts from './components/Posts/Posts';
-import Form from './components/Form/Form';
-import logo from './images/logo.png';
-import useStyles from './styles';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';  //Dependencies to make app multi-page
 
-const App = () => {
-    const [currentId, setCurrentId] = useState(null);  //Set id to null at the start
-    const classes = useStyles();
-    const dispatch = useDispatch();  //Initailize redux dispatch function
-    useEffect(()=>{  
-        dispatch(getPosts());
-    }, [currentId, dispatch]);
-    return(
-         <Container maxWidth = "LG">
-             <AppBar className = {classes.appBar} position = "static" color = "inherit">
-                    <Typography className = {classes.heading} variant = "h2" align ="center" > Red Social </Typography>
-                    <img className = {classes.image} src={logo} alt = "logo" height = "60"/>
-             </AppBar>
-             <Grow in>
-                <Container>
-                    <Grid container justify = "space-between" alignItems = "strech" spacing ={3}>
-                        <Grid item xs = {12} sm = {7}>
-                            <Posts setCurrentId = { setCurrentId }/>
-                        </Grid>
-                        <Grid item xs = {12} sm = {4}>  
-                            <Form currentId ={currentId} setCurrentId = {setCurrentId}/ >
-                        </Grid>
-                    </Grid>
-                </Container>
-             </Grow>
-         </Container>
+import Navbar from './components/Navbar/Navbar';
+
+import Auth from './components/Auth/Auth';
+import Home from './components/Home/Home';
+
+const App = () => (
+    <BrowserRouter>
+        <Container maxWidth = "LG">
+            <Navbar/>
+            <Switch>
+                <Route path = "/" exact component = {Home} />
+                <Route path = "/auth" exact component = {Auth}/>
+            </Switch>
+        </Container>
+    </BrowserRouter>
+         
            
-    );
-}
+
+);
 
 export default App;
