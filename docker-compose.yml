@@ -6,12 +6,19 @@ services:
         context: ./server
         dockerfile: Dockerfile
       image: myapp-server
-      container_name: myapp-node-server
+      #container_name: myapp-node-server
       command: npm start
       volumes:
         - ./server/:/server
+    lb: #Load Balancer
+      image: dockercloud/haproxy
+      links:
+        - server
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
       ports:
-        - "5000:5000"
+        - 80:80
+        - 81:1936
     client:
       build:
         context: ./client
