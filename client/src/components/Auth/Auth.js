@@ -7,24 +7,35 @@ import {GoogleLogin} from 'react-google-login';
 import Icon from './icon'
 import {useDispatch} from 'react-redux';
 import { useHistory} from 'react-router-dom';
+import { signin, signup } from '../../actions/auth';
 
 
+const initialState = { firstName: '', lastName: '', email: '', password:'', confirmPassword: ''};
 
 export const Auth = () => {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setisSignup] = useState(false);
+    const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
     const history = useHistory();
-    const handleShowPassword = () => {
+    
 
+    const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        //console.log(formData);
+
+        if(isSignup){
+            dispatch(signup(formData, history)); //Pass form data and history object to navigate after submit
+        } else {
+            dispatch(signin(formData, history));
+        }
     };
 
-
-    const handleSubmit = () => setShowPassword((prevShowPassword) => !prevShowPassword);
-
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value}) //Sets data accortding to current input
     };
 
     const switchMode = () => {
@@ -66,7 +77,7 @@ export const Auth = () => {
                                 </>
                             )
                         }
-                        <Input name = "email" label= "Email Address" handleChange={handleChange} type = "email"/>
+                        <Input name = "email" label= "Email" handleChange={handleChange} type = "email"/>
                         <Input name = "password" label= "Password" handleChange={handleChange} type = {showPassword ? "text" : "password"} handleShowPassword={handleShowPassword}/>
                         { isSignup && <Input name="confirmPassword" label = "Confirm Password" handleChange={handleChange} type= "password"/>}
                     </Grid>
