@@ -18,7 +18,7 @@ export const signin = async (req, res) => {
         if(!isPasswordCorrect) return res.status(400).json({ message: "Incorrect Password"}); //If password is incorrect, error 400
 
 
-        const token = jwt.sign({ email: existingUser.email, id: existingUser._id}, 'test', {expiresIn: "1h"});   //Create Jsonwebtoken, can change this to sessions with Redis
+        const token = jwt.sign({ email: existingUser.email, id: existingUser._id}, 'test', {expiresIn: "1h"});   //Create Jsonwebtoken, can change this to sessions with Redis (Secret is test)
         
         res.status(200).json({result: existingUser, token}); //Return users new token
 
@@ -43,7 +43,7 @@ export const signup = async (req, res) => {
 
         const token = jwt.sign({ email: result.email, id: result._id}, 'test', {expiresIn: "1h"});   //Create Jsonwebtoken, can change this to sessions with Redis
 
-        res.status(200).json({result: existingUser, token}); //Return users new token
+        res.status(200).json({result, token}); //Return users new token
 
     } catch (error) {
         res.status(500).json({message : "Something failed"}); // Return undefined server error
