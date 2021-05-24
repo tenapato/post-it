@@ -4,6 +4,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import useStyles from './styles';
 import logo from '../../images/logo.png';
 import {useDispatch} from 'react-redux';
+import decode from 'jwt-decode';
 
 
 const Navbar = () => {
@@ -17,6 +18,16 @@ const Navbar = () => {
     useEffect(() => {
         const token = user?.token;  //If the user exists, send its token to token variable
         
+        // Falta arreglar bug que si haces rerfresh te saca
+        if(token){
+            const decodedToken = decode(token);
+
+            if (decodedToken.exp * 1000 < new Date().getTime()) {  //Checks if token has expired
+                logout();
+            }
+
+        }
+
         setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]);
 
@@ -39,7 +50,7 @@ const Navbar = () => {
             <Typography className = {classes.userName} variant="h6" > {user.result.name} </Typography>
             <Button variant="contained" className = {classes.logout} color = "secondary" onClick={logout}> Log Out </Button>
         </div>) : (
-            <Button component={Link} to = "/auth" variant = "contained" color = "primary">Sign In</Button>
+            <Button className = {classes.signinButton} component={Link} to = "/auth" variant = "contained" color = "primary">Sign In</Button>
         )}
         </Toolbar>
     </AppBar>

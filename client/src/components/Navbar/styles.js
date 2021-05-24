@@ -41,4 +41,15 @@ export default makeStyles((theme) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
   },
+  signinButton: {
+    '&:hover': {
+      backgroundColor: 'orange',
+      color : 'white'
+      
+    },
+    
+      backgroundColor: 'white',
+      color: 'black'
+    
+  }
 }));
