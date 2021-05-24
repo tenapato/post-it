@@ -1,16 +1,14 @@
-// Sets a route for every post
-
 import express from 'express';
-import { getPosts, createPost, updatePost, deletePost, likePost} from '../controllers/posts.js';
-import auth from '../middleware/auth.js'; //Authentication middleware
 
-const router = express.Router(); //Router instance
+import { getPosts, getPost, createPost, updatePost, likePost, deletePost } from '../controllers/posts.js';
 
-//localhost:5000/posts 
+const router = express.Router();
+import auth from "../middleware/auth.js";
+
 router.get('/', getPosts);
-router.post('/', auth, createPost); 
-router.patch('/:id', auth, updatePost);  //updating posts
-router.delete('/:id', auth, deletePost); //deleting posts
-router.patch('/:id/likePost', auth, likePost); //liking posts
+router.post('/',auth,  createPost);
+router.patch('/:id', auth, updatePost);
+router.delete('/:id', auth, deletePost);
+router.patch('/:id/likePost', auth, likePost);
 
 export default router;
