@@ -1,3 +1,5 @@
+// Logic for signing in and signing up the user
+// This code also verifies the user data and creates its token
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
