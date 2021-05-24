@@ -17,7 +17,6 @@ export const signin = async (req, res) => {
 
         if(!isPasswordCorrect) return res.status(400).json({ message: "Incorrect Password"}); //If password is incorrect, error 400
 
-
         const token = jwt.sign({ email: existingUser.email, id: existingUser._id}, 'test', {expiresIn: "1h"});   //Create Jsonwebtoken, can change this to sessions with Redis (Secret is test)
         
         res.status(200).json({result: existingUser, token}); //Return users new token
@@ -28,10 +27,10 @@ export const signin = async (req, res) => {
 }
 
 export const signup = async (req, res) => {
-    const { email, password, confirmPassword, firstName, lastName} = req.body;
+    const { email, password, firstName, lastName} = req.body;
 
     try {
-        const existingUser = await Use.findOne({email});
+        const existingUser = await User.findOne({email});
         
         if(existingUser) return res.status(400).json({ message: "User already exist"}); //If user is found, error 400
 
@@ -39,9 +38,9 @@ export const signup = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(passsword, 12); //Hash the password with a dificulty of 12
 
-        const result = await User.create({ email, password: hashedPassword, name: `${firstName} ${lastName}`}); //Create a user
+        const result = await User.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` }); //Create a user
 
-        const token = jwt.sign({ email: result.email, id: result._id}, 'test', {expiresIn: "1h"});   //Create Jsonwebtoken, can change this to sessions with Redis
+        const token = jwt.sign( { email: result.email, id: result._id }, "test", { expiresIn: "1h" } );  //Create Jsonwebtoken, can change this to sessions with Redis
 
         res.status(200).json({result, token}); //Return users new token
 

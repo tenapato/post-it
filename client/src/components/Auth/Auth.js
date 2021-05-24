@@ -25,7 +25,7 @@ export const Auth = () => {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        //console.log(formData);
+        console.log(formData);
 
         if(isSignup){
             dispatch(signup(formData, history)); //Pass form data and history object to navigate after submit
@@ -40,7 +40,7 @@ export const Auth = () => {
 
     const switchMode = () => {
         setisSignup((previsSignup) => !previsSignup);
-        handleShowPassword(false);
+        setShowPassword(false);
     };
 
     const googleSuccess = async (res) => {
