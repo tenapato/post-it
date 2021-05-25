@@ -31,5 +31,14 @@ export default makeStyles((theme) => ({
   buttonClear: {
     backgroundColor: '#DD8614',
   },
+  siginWarningCard: {
+    padding: theme.spacing(2),
+    color: 'black',
+    backgroundColor: 'white',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    fontSize: '40'
+  }
   
 }));

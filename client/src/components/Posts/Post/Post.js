@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardActions , CardContent, CardMedia, Button, Typography } from '@material-ui/core';
+import { Card, CardActions , CardContent, CardMedia, Button, Typography, Avatar } from '@material-ui/core';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -11,6 +11,7 @@ import { deletePost, likePost } from '../../../actions/posts';
 
 
 const Post = ({post, setCurrentId}) =>{
+    console.log(post);
     const dispatch = useDispatch();
     const classes = useStyles();
     const user = JSON.parse(localStorage.getItem('profile'));
@@ -38,6 +39,7 @@ const Post = ({post, setCurrentId}) =>{
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
             <div className={classes.overlay}>
+                <Avatar className={classes.profilePicture} alt= {post.name} src = {post.creator.imageUrl}> {post.name.charAt(0)} </Avatar>
                 <Typography variant="h6">{post.name}</Typography>
                 <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
             </div>

@@ -5,6 +5,37 @@ import useStyles from './styles';
 import logo from '../../images/logo.png';
 import {useDispatch} from 'react-redux';
 import decode from 'jwt-decode';
+import Badge from '@material-ui/core/Badge';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+
+const StyledBadge = withStyles((theme) => ({
+    badge: {
+      backgroundColor: '#44b700',
+      color: '#44b700',
+      boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+      '&::after': {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        borderRadius: '50%',
+        animation: '$ripple 1.2s infinite ease-in-out',
+        border: '1px solid currentColor',
+        content: '""',
+      },
+    },
+    '@keyframes ripple': {
+      '0%': {
+        transform: 'scale(.8)',
+        opacity: 1,
+      },
+      '100%': {
+        transform: 'scale(2.4)',
+        opacity: 0,
+      },
+    },
+  }))(Badge);
 
 
 const Navbar = () => {
@@ -46,7 +77,9 @@ const Navbar = () => {
         </div>
         <Toolbar className={classes.toolbar}>
         {user ? (<div className = {classes.profile}> 
+            <StyledBadge overlap="circle" anchorOrigin={{vertical: 'bottom',horizontal: 'right',}}variant="dot">
             <Avatar className = {classes.purple} alt= {user.result.name} src = {user.result.imageUrl}> {user.result.name.charAt(0)} </Avatar>
+            </StyledBadge>
             <Typography className = {classes.userName} variant="h6" > {user.result.name} </Typography>
             <Button variant="contained" className = {classes.logout} color = "secondary" onClick={logout}> Log Out </Button>
         </div>) : (

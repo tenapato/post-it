@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import useStyles from './styles';
 import { createPost, updatePost } from '../../actions/posts';
 import { useSelector } from 'react-redux';
+import ErrorIcon from '@material-ui/icons/Error';
 
 const Form = ({currentId, setCurrentId}) =>{
     const [postData, setPostData] = useState({ //Get data to add to a post
@@ -36,10 +37,13 @@ const Form = ({currentId, setCurrentId}) =>{
 
     if(!user?.result?.name) {
         return(
-            <Paper className = {classes.paper}>
+            <Paper className = {classes.siginWarningCard}>
+                <ErrorIcon/>
                 <Typography variant ="h6" align = "center">
+                    
                     Sign In to create a Post
                 </Typography>
+                
 
             </Paper>
 

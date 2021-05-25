@@ -26,6 +26,13 @@ export default makeStyles({
     top: '20px',
     left: '20px',
     color: 'white',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'left',
+  },
+  profilePicture: {
+    
+    
   },
   overlay2: {
     position: 'absolute',
