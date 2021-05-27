@@ -48,3 +48,21 @@ export const signup = async (req, res) => {
     console.log(error);
   }
 };
+
+
+export const users = async (req, res) => {
+  
+
+  try {
+    const userData = await UserModal.find();
+    
+    res.status(200).json(userData);
+    console.log(userData);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+
+  
+
+
+}
