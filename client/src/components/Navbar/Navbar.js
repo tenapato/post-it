@@ -41,6 +41,9 @@ const Navbar = () => {
         setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]);
 
+    const Admin = null;
+
+
     const logout = () => {
         dispatch({ type: 'LOGOUT'});
         
@@ -63,6 +66,9 @@ const Navbar = () => {
             <Button variant="contained" className = {classes.logout} color = "secondary" onClick={logout}> Log Out </Button>
         </div>) : (
             <Button className = {classes.signinButton} component={Link} to = "/auth" variant = "contained" color = "primary">Sign In</Button>
+        )}
+        { Admin  && (
+            <Button className = {classes.signinButton} component={Link} to = "/Dashboard"> Dashboard</Button>
         )}
         </Toolbar>
     </AppBar>
