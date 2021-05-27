@@ -2,7 +2,7 @@
 // This code also verifies the user data and creates its token
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-
+import mongoose from 'mongoose';
 import UserModal from "../models/user.js";
 
 const secret = 'test';
@@ -51,7 +51,6 @@ export const signup = async (req, res) => {
 
 
 export const users = async (req, res) => {
-  
 
   try {
     const userData = await UserModal.find();
@@ -62,7 +61,15 @@ export const users = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 
-  
+};
 
 
+export const deleteUser = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No user with id: ${id}`);
+
+  await UserModal.findByIdAndRemove(id);
+
+  res.json({ message: "User deleted successfully." });
 }
