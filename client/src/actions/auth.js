@@ -1,6 +1,13 @@
 import * as api from '../api';
 import { AUTH } from '../constants/actionTypes';
 
+import Modal, { useState, Component} from 'react';
+//import { Button } from '@material-ui/core';
+import { Container, Button, Alert } from 'reactstrap';
+
+
+
+
 export const signin = (formData, history) => async (dispatch) => {
     try {
         // Log in user first
@@ -24,5 +31,13 @@ export const signup = (formData, history) => async (dispatch) => {
         history.push('/');
     } catch (error) {
         console.log(error);
+        console.log('User Already exists');
+        //return error.json({ message: 'hola'});
+
+        
+        //handleError();
+
+        
+        
     }
 }
