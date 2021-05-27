@@ -14,11 +14,7 @@ import { useHistory} from 'react-router-dom';
 
 import { fetchUsers, deleteUser } from '../../actions/users';
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-});
+import useStyles from './styles';
 
 function createData(id, name, email) {
   return { id, name, email};
@@ -62,7 +58,7 @@ const DataTable = () => {
               </TableCell>
               <TableCell align="center">{user.name}</TableCell>
               <TableCell align="center">{user.email}</TableCell>
-              <Button onClick={()=> dispatch(deleteUser(user._id))}> Delete </Button>
+              <Button className={classes.delete} onClick={()=> dispatch(deleteUser(user._id))}> Delete </Button>
             </TableRow>
           ))}
         </TableBody>

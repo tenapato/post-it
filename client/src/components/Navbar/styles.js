@@ -50,7 +50,21 @@ export default makeStyles((theme) => ({
     
       backgroundColor: 'white',
       color: 'black'
+  },
+  dashboardButton: {
+    '&:hover': {
+      backgroundColor: 'green',
+      color : 'white'
+      
+    },
+    
+      backgroundColor: '#81b214',
+      color: 'white'
     
   },
+  dashB: {
+    width: '100px',
+    padding:'10px'
+  }
   
 }));

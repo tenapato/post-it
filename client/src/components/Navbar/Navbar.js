@@ -41,7 +41,7 @@ const Navbar = () => {
         setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]);
 
-    const Admin = null;
+    const Admin = 'Asa';
 
 
     const logout = () => {
@@ -67,8 +67,9 @@ const Navbar = () => {
         </div>) : (
             <Button className = {classes.signinButton} component={Link} to = "/auth" variant = "contained" color = "primary">Sign In</Button>
         )}
-        { Admin  && (
-            <Button className = {classes.signinButton} component={Link} to = "/Dashboard"> Dashboard</Button>
+        { Admin  && (<div className = {classes.dashB}>
+            <Button className = {classes.dashboardButton} component={Link} to = "/Dashboard"> Dashboard</Button>
+            </div>
         )}
         </Toolbar>
     </AppBar>
