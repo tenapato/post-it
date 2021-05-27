@@ -15,7 +15,7 @@ const Post = ({post, setCurrentId}) =>{
     const dispatch = useDispatch();
     const classes = useStyles();
     const user = JSON.parse(localStorage.getItem('profile'));
-
+    
 
     //Like counter logic 
     const Likes = () => {
