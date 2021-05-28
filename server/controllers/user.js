@@ -4,6 +4,9 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import mongoose from 'mongoose';
 import UserModal from "../models/user.js";
+import client from '../index.js';
+
+
 
 const secret = 'test';
 
@@ -20,7 +23,7 @@ export const signin = async (req, res) => {
     if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials" });
 
     const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, { expiresIn: "1h" });
-
+    client.hmset("users","token", String(token)); //Save token in redis 
     res.status(200).json({ result: oldUser, token });
   } catch (err) {
     res.status(500).json({ message: "Something went wrong" });
@@ -39,8 +42,12 @@ export const signup = async (req, res) => {
 
     const result = await UserModal.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
 
+    // ------ Redis Env Variable
+    
     const token = jwt.sign( { email: result.email, id: result._id }, secret, { expiresIn: "1h" } );
 
+    client.hmset("users","token", String(token));//Save token in redis 
+    
     res.status(201).json({ result, token });
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });
