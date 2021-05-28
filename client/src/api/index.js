@@ -1,6 +1,17 @@
 import axios from 'axios';
+//import redis from 'redis';
+//import { AxiosRedis } from '@tictactrip/axios-redis';
 
 const API = axios.create({ baseURL: 'http://localhost:80'}); //Axios instance
+
+//const client = redis.createClient(process.env.REDIS_URL);
+
+//client.hmset("hosts", "mjr", "1", "another", "23", "home", "1234");
+/*client.hgetall("hosts", function (err, obj) {
+    console.dir(obj);
+});*/
+//const axiosRedis = new AxiosRedis(redis);
+
 
 //const url = 'http://localhost:80/posts';
 
