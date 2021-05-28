@@ -10,6 +10,12 @@ services:
       command: npm start
       volumes:
         - ./server/:/server
+      depends_on: 
+        - redis
+      links:
+        - redis
+      environment:
+        - REDIS_URL=redis://cache
     lb: #Load Balancer
       image: dockercloud/haproxy
       links:
@@ -29,13 +35,26 @@ services:
       command: npm start
       depends_on:
         - server
+        - redis
       volumes:
         - ./client/src:/client/src
+      links:
+        - redis
       environment: 
         - CHOKIDAR_USEPOLLING=true
+        - REDIS_URL=redis://cache
       ports:
         - "3000:3000"
-
+    redis:
+      image: "redis"
+      ports: 
+      - 6379:6379
+      expose: 
+        - 6379
+      restart: 
+        always
+      container_name: cache
+      
 
 volumes:
   data-volume:
