@@ -41,7 +41,7 @@ const Navbar = () => {
         setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]);
 
-    const Admin = 'Asa';
+    const Admin = 'True';
 
 
     const logout = () => {
