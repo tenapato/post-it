@@ -2,16 +2,8 @@
 // This code also verifies the user data and creates its token
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-<<<<<<< HEAD
 
 import UserModel from "../models/user.js";
-=======
-import mongoose from 'mongoose';
-import UserModal from "../models/user.js";
-import client from '../index.js';
-
-
->>>>>>> admin_user_integration
 
 const secret = 'test';
 
@@ -28,8 +20,6 @@ export const signin = async (req, res) => {
     if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials" });
 
     const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, { expiresIn: "1h" });
-    client.set("token", String(token)); //Save token in redis 
-    client.expire("token", 3600); // Token expires in 1h
 
     res.status(200).json({ result: oldUser, token });
   } catch (err) {
@@ -49,14 +39,7 @@ export const signup = async (req, res) => {
 
     const result = await UserModel.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
 
-    // ------ Redis Env Variable
-    
     const token = jwt.sign( { email: result.email, id: result._id }, secret, { expiresIn: "1h" } );
-
-    //client.hset("users","token", String(token));
-    client.set("token", String(token)); //Save token in redis 
-    client.expire("token", 3600); // Token expires in 1h
-
 
     res.status(201).json({ result, token });
   } catch (error) {
@@ -65,28 +48,3 @@ export const signup = async (req, res) => {
     console.log(error);
   }
 };
-
-
-export const users = async (req, res) => {
-
-  try {
-    const userData = await UserModal.find();
-    
-    res.status(200).json(userData);
-    console.log(userData);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-
-};
-
-
-export const deleteUser = async (req, res) => {
-  const { id } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No user with id: ${id}`);
-
-  await UserModal.findByIdAndRemove(id);
-
-  res.json({ message: "User deleted successfully." });
-}

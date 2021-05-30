@@ -1,6 +1,5 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import client from '../index.js';
 
 import PostMessage from '../models/postMessage.js';
 
@@ -9,7 +8,7 @@ const router = express.Router();
 export const getPosts = async (req, res) => { 
     try {
         const postMessages = await PostMessage.find();
-        client.expire("token", 3600);
+                
         res.status(200).json(postMessages);
     } catch (error) {
         res.status(404).json({ message: error.message });
@@ -25,7 +24,7 @@ export const createPost = async (req, res) => {
 
     try {
         await newPostMessage.save();
-        client.expire("token", 3600);
+
         res.status(201).json(newPostMessage );
     } catch (error) {
         res.status(409).json({ message: error.message });
@@ -41,7 +40,7 @@ export const updatePost = async (req, res) => {
     const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
 
     await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
-    client.expire("token", 3600);
+
     res.json(updatedPost);
 }
 
@@ -51,7 +50,7 @@ export const deletePost = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
     await PostMessage.findByIdAndRemove(id);
-    client.expire("token", 3600);
+
     res.json({ message: "Post deleted successfully." });
 }
 
@@ -74,7 +73,6 @@ export const likePost = async (req, res) => {
       post.likes = post.likes.filter((id) => id !== String(req.userId));
     }
     const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
-    client.expire("token", 3600);
     res.status(200).json(updatedPost);
 }
 

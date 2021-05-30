@@ -10,15 +10,14 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 50px',
-    backgroundColor: '#0a81ab'
+    backgroundColor: '#FFB20D'
   },
   heading: {
     color: 'white',
     textDecoration: 'none',
   },
   image: {
-    marginLeft: '0px',
-    marginRight: '10px',
+    marginLeft: '15px',
   },
   toolbar: {
     display: 'flex',
@@ -44,28 +43,14 @@ export default makeStyles((theme) => ({
   },
   signinButton: {
     '&:hover': {
-      backgroundColor: '#0c4271',
+      backgroundColor: 'orange',
       color : 'white'
       
     },
     
       backgroundColor: 'white',
       color: 'black'
-  },
-  dashboardButton: {
-    '&:hover': {
-      backgroundColor: 'green',
-      color : 'white'
-      
-    },
-    
-      backgroundColor: '#81b214',
-      color: 'white'
     
   },
-  dashB: {
-    width: '100px',
-    padding:'10px'
-  }
   
 }));
