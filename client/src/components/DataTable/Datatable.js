@@ -21,17 +21,14 @@ function createData(id, name, email) {
 }
 
 
-const submitHandler = () =>{
-  console.log('User Deleted');
-  //history.push('/Dashboard')
-} 
+
 
 
 
 const DataTable = () => {
   const classes = useStyles();
   const users = useSelector((state) => state.users)
-  //const history = useHistory();
+  const history = useHistory();
 
   const dispatch = useDispatch();  //Initailize redux dispatch function
     useEffect(()=>{  
@@ -39,6 +36,19 @@ const DataTable = () => {
     }, [dispatch]);
   //const dispatch = useDispatch();
     console.log(users);
+
+    const submitHandler = (user) =>{
+  
+      console.log('User Deleted');
+      console.log(user);
+      dispatch(deleteUser(user._id));
+      //history.push('/Dashboard')
+      //window.location.reload()
+      dispatch(fetchUsers());
+    } 
+
+
+
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} size="small" aria-label="a dense table">
@@ -58,7 +68,7 @@ const DataTable = () => {
               </TableCell>
               <TableCell align="center">{user.name}</TableCell>
               <TableCell align="center">{user.email}</TableCell>
-              <Button className={classes.delete} onClick={()=> dispatch(deleteUser(user._id))}> Delete </Button>
+              <Button className={classes.delete} onClick={()=> submitHandler(user)}> Delete </Button>
             </TableRow>
           ))}
         </TableBody>
