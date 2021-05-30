@@ -35,7 +35,13 @@ mongoose.set('useFindAndModify', false);
     port: 6379
 }); */
 
-const client = redis.createClient(process.env.REDIS_URL); //Redis connection
+//const client = redis.createClient(process.env.REDIS_URL); //Redis connection
+const client = redis.createClient({
+    host: 'redis-13279.c62.us-east-1-4.ec2.cloud.redislabs.com',
+    port: 13279,
+    password: 'xpyHDejjVgip55uKtLYWYDek8SxNKNN5'
+})
+
 
 client.on('error', err => {
     console.log('Error ' + err);

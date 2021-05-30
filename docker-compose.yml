@@ -42,7 +42,8 @@ services:
         - redis
       environment: 
         - CHOKIDAR_USEPOLLING=true
-        - REDIS_URL=redis://cache # Redis Lab
+        #- REDIS_URL=redis://cache # Redis Lab
+        #- REDIS_URL= redis-13279.c62.us-east-1-4.ec2.cloud.redislabs.com:13279
       ports:
         - "3000:3000"
     redis:
