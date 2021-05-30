@@ -19,18 +19,16 @@ export const Auth = () => {
     const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
     const history = useHistory();
-
+    
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
-
 
     const handleSubmit = (e) =>{
         e.preventDefault();
         console.log(formData);
-        
+
         if(isSignup){
             dispatch(signup(formData, history)); //Pass form data and history object to navigate after submit
-            
         } else {
             dispatch(signin(formData, history));
         }
@@ -66,7 +64,7 @@ export const Auth = () => {
         <Container component="main" maxWidth = "xs">
             <Paper className={classes.paper} elevation={3}>
                 <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
+                    <LockOutlinedIcon />
                 </Avatar>
                 <Typography variant="h5">{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
                 <form className={classes.form} onSubmit={handleSubmit}>
