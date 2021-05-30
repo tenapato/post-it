@@ -43,8 +43,8 @@ const DataTable = () => {
       console.log(user);
       dispatch(deleteUser(user._id));
       //history.push('/Dashboard')
-      //window.location.reload()
-      dispatch(fetchUsers());
+      window.location.reload()
+      //dispatch(fetchUsers());
     } 
 
 
