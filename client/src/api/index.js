@@ -1,6 +1,17 @@
 import axios from 'axios';
+//import redis from 'redis';
+//import { AxiosRedis } from '@tictactrip/axios-redis';
 
 const API = axios.create({ baseURL: 'http://localhost:80'}); //Axios instance
+
+//const client = redis.createClient(process.env.REDIS_URL);
+
+//client.hmset("hosts", "mjr", "1", "another", "23", "home", "1234");
+/*client.hgetall("hosts", function (err, obj) {
+    console.dir(obj);
+});*/
+//const axiosRedis = new AxiosRedis(redis);
+
 
 //const url = 'http://localhost:80/posts';
 
@@ -24,3 +35,6 @@ export const deletePost = (id) => API.delete(`/posts/${id}`);
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
+
+export const fetchUsers = () => API.get('/user');
+export const deleteUser = (id) => API.delete(`/user/${id}`);
