@@ -55,6 +55,7 @@ const Form = ({currentId, setCurrentId}) =>{
         setCurrentId(null);
         setPostData({ title: '', message: '', tags: '', selectedFile: ''})
     }
+   
     return (
         //<h1 className = {classes.form}>FORM</h1>
         <Paper className = {classes.paper}>
@@ -71,6 +72,7 @@ const Form = ({currentId, setCurrentId}) =>{
             </form>
         </Paper>
     );
+  
 }
 
 export default Form;

@@ -1,13 +1,17 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import client from '../index.js';
-
+//import {useState} from 'react';
 import PostMessage from '../models/postMessage.js';
+import jwt from "jsonwebtoken";
 
 const router = express.Router();
 
+
 export const getPosts = async (req, res) => { 
+    
     try {
+        
         const postMessages = await PostMessage.find();
         client.expire("token", 3600);
         res.status(200).json(postMessages);

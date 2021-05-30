@@ -23,8 +23,8 @@ export const signin = async (req, res) => {
     if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials" });
 
     const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, { expiresIn: "1h" });
-    client.set("token", String(token)); //Save token in redis 
-    client.expire("token", 3600); // Token expires in 1h
+    client.set(String(token), email); //Save token in redis 
+    client.expire(String(token), 3600); // Token expires in 1h
 
     res.status(200).json({ result: oldUser, token });
   } catch (err) {
@@ -49,8 +49,8 @@ export const signup = async (req, res) => {
     const token = jwt.sign( { email: result.email, id: result._id }, secret, { expiresIn: "1h" } );
 
     //client.hset("users","token", String(token));
-    client.set("token", String(token)); //Save token in redis 
-    client.expire("token", 3600); // Token expires in 1h
+    client.set(String(token), email); //Save token in redis 
+    client.expire(String(token), 3600); // Token expires in 1h
 
 
     res.status(201).json({ result, token });
