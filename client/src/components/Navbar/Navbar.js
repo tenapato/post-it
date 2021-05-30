@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { AppBar, Typography, Avatar, Toolbar, Button } from '@material-ui/core';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import useStyles from './styles';
-import logo from '../../images/logo.png';
+import logo from '../../images/logoNew.png';
 import {useDispatch} from 'react-redux';
 import decode from 'jwt-decode';
 import Badge from '@material-ui/core/Badge';
@@ -41,6 +41,10 @@ const Navbar = () => {
         setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]);
 
+    console.log(user);
+    const Admin = user?.result?.admin;
+
+
     const logout = () => {
         dispatch({ type: 'LOGOUT'});
         
@@ -51,8 +55,8 @@ const Navbar = () => {
     return(
     <AppBar className = {classes.appBar} position = "static" color = "inherit">
         <div className={classes.brandContainer}>
-        <Typography component={Link} to='/'className = {classes.heading} variant = "h2" align ="center" > Red Social </Typography>
         <img className = {classes.image} src={logo} alt = "logo" height = "60"/>
+        <Typography component={Link} to='/'className = {classes.heading} variant = "h2" align ="center" > Post-It.io </Typography>
         </div>
         <Toolbar className={classes.toolbar}>
         {user ? (<div className = {classes.profile}> 
@@ -63,6 +67,10 @@ const Navbar = () => {
             <Button variant="contained" className = {classes.logout} color = "secondary" onClick={logout}> Log Out </Button>
         </div>) : (
             <Button className = {classes.signinButton} component={Link} to = "/auth" variant = "contained" color = "primary">Sign In</Button>
+        )}
+        { Admin  && (<div className = {classes.dashB}>
+            <Button className = {classes.dashboardButton} component={Link} to = "/Dashboard"> Dashboard</Button>
+            </div>
         )}
         </Toolbar>
     </AppBar>

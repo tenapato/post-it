@@ -11,7 +11,7 @@ export default makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     color: 'black',
-    backgroundColor: 'white'
+    backgroundColor: '#393e46'
   },
   form: {
     display: 'flex',
@@ -26,10 +26,18 @@ export default makeStyles((theme) => ({
   buttonSubmit: {
     marginBottom: 10,
     color: 'white',
-    backgroundColor: '#FFB20D'
+    backgroundColor: '#0c4271'
   },
   buttonClear: {
-    backgroundColor: '#DD8614',
+  
+    '&:hover': {
+      backgroundColor: '#00adb5',
+      color : 'white'
+      
+    },
+    
+      backgroundColor: '#0a81ab',
+      color: 'white'
   },
   siginWarningCard: {
     padding: theme.spacing(2),
@@ -39,6 +47,10 @@ export default makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     fontSize: '40'
+  },
+  textField: {
+    color: 'white',
+    
   }
   
 }));

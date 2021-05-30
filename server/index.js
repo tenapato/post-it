@@ -5,6 +5,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import postRoutes from  './routes/posts.js';
 import userRoutes from  './routes/users.js';
+import redis from 'redis';
+
 
 const app = express();
 dotenv.config();
@@ -26,3 +28,28 @@ mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnified
     .catch((error)=> console.log(error.message));
 
 mongoose.set('useFindAndModify', false);
+
+
+/*const client = redis.createClient({
+    host: '127.0.0.1',
+    port: 6379
+}); */
+
+//const client = redis.createClient(process.env.REDIS_URL); //Redis connection
+const client = redis.createClient({
+    host: 'redis-13279.c62.us-east-1-4.ec2.cloud.redislabs.com',
+    port: 13279,
+    password: 'xpyHDejjVgip55uKtLYWYDek8SxNKNN5'
+})
+
+
+client.on('error', err => {
+    console.log('Error ' + err);
+});
+
+export default client;
+
+//client.hmset("hosts", "mjr", "1", "another", "23", "home", "1234");
+/*client.hgetall("hosts", function (err, obj) {
+    console.dir(obj);
+});*/
