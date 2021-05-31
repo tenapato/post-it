@@ -184,6 +184,7 @@ Users
 11. Para apagar el contenedor
 
         docker-compose down
+> Nota: en la version de prueba el usuario administrador es : adminuser@gmail.com y la pswd es admin
 ## 4. Referencias
 
 - https://es.reactjs.org/
@@ -192,4 +193,3 @@ Users
 - https://github.com/axios/axios
 - https://react-redux.js.org/
 - https://nodejs.org/es/
-- https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-1/
