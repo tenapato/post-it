@@ -66,7 +66,7 @@ Para crear las sesiones de redis, se genera un token cuando el usuario inicia/cr
 
 ### 3.2 Arquitectura de la solución
 #### 3.2.1 Arquitectura completa del poryecto
-![Imagen_1](./docs/arquitectura.PNG)
+![Imagen_1](docs/arquitectura.JPEG)
 #### 3.2.2 Modelos de las bases de datos
 ![Imagen_2](docs/modelos.JPEG)
 #### 3.2.3 Arquitectura del frontend
