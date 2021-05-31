@@ -144,9 +144,9 @@ Para el backend no se utilizó ningun framework
 
 ### Endpoints
 Posts
-![Imagen_3](docs/endpoint_posts.JPEG)
+![Imagen_4](docs/endpoint_posts.JPEG)
 Users
-![Imagen_3](docs/endpoint_users.JPEG)
+![Imagen_5](docs/endpoint_users.JPEG)
 ## 3.5 Pasos a seguir para utilizar el proyecto
 
 1. Clonar el repostirorio
