@@ -177,6 +177,7 @@ Users
 
         docker-compose up
 9. Para levantar la aplicación con el Load balancer:
+        
         docker-compose up --scale server=3
     > Donde '3' es el número de servidores a levantar
 10. Conectarse al link del client: http://localhost3000
