@@ -68,9 +68,9 @@ Para crear las sesiones de redis, se genera un token cuando el usuario inicia/cr
 #### 3.2.1 Arquitectura completa del poryecto
 ![Imagen_1](docs/arquitectura.jpeg)
 #### 3.2.2 Modelos de las bases de datos
-![Imagen_2](docs/modelos.JPEG)
+![Imagen_2](docs/modelos.jpeg)
 #### 3.2.3 Arquitectura del frontend
-![Imagen_3](docs/pagina.JPEG)
+![Imagen_3](docs/pagina.jpeg)
 ### 3.3 Frontend
 La aplicación utiliza ReactJS que nos permite crear una aplicación frontend web que facilita la conección a bases de datos NoSQL, así como facilitar la implentación de la parte visual de la página.
 
@@ -144,9 +144,9 @@ Para el backend no se utilizó ningun framework
 
 ### Endpoints
 Posts
-![Imagen_4](docs/endpoint_posts.JPEG)
+![Imagen_4](docs/endpoint_posts.jpeg)
 Users
-![Imagen_5](docs/endpoint_users.JPEG)
+![Imagen_5](docs/endpoint_users.jpeg)
 ## 3.5 Pasos a seguir para utilizar el proyecto
 
 1. Clonar el repostirorio
