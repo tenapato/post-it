@@ -5,7 +5,7 @@
 
 ##### Integrantes:
 1. Patricio Tena Zozaya - A01027293 - Campus Santa Fe
-2. Francisco Acuña Franco - A01027294 - Campus Santa 
+2. Francisco Acuña Franco - A01027294 - Campus Santa Fe
 
 ---
 ## 1. Aspectos generales
