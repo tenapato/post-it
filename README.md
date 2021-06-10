@@ -128,7 +128,7 @@ Users
         git clone https://github.com/tenapato/post-it
 2. Cambiarte a la ubicación del repostirorio
         
-        cd tc3041-csfpf-primavera-2021-team-15
+        cd post-it
 * Nota: Para correr todo con el archivo docker-compose, saltarse hasta el paso 7
 3. Abrir una terminal y meterte a la carpeta de *Client* y compilar la imagen
 
