@@ -125,7 +125,7 @@ Users
 
 1. Clonar el repostirorio
         
-        git clone https://github.com/tec-csf/tc3041-pf-primavera-2021-team-13
+        git clone https://github.com/tenapato/post-it
 2. Cambiarte a la ubicación del repostirorio
         
         cd tc3041-csfpf-primavera-2021-team-15
