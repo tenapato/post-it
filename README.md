@@ -1,31 +1,14 @@
-# TC3041 Proyecto Final
 
 # Red Social - Post It
 ---
 
-##### Integrantes:
-1. Patricio Tena Zozaya - A01027293 - Campus Santa Fe
-2. Francisco Acuña Franco - A01027294 - Campus Santa Fe
+##### Autores:
+1. Patricio Tena Zozaya
+2. Francisco Acuña Franco 
 
 ---
-## 1. Aspectos generales
 
-Las orientaciones del proyecto se encuentran disponibles en la plataforma **Canvas**.
-
-Este documento es una guía sobre qué información debe entregar como parte del proyecto, qué requerimientos técnicos debe cumplir y la estructura que debe seguir para organizar su entrega.
-
-### 1.1 Requerimientos técnicos
-
-A continuación se mencionan los requerimientos técnicos mínimos del proyecto, favor de tenerlos presente para que cumpla con todos.
-
-* El equipo tiene la libertad de elegir las tecnologías de desarrollo a utilizar en el proyecto.
-* El proyecto debe utilizar al menos dos modelos de bases de datos diferentes, de los estudiados en el curso.
-* La arquitectura debe ser modular, escalable, con redundancia y alta disponibilidad.
-* La arquitectura deberá estar separada claramente por capas (*frontend*, *backend*, *API RESTful*, datos y almacenamiento).
-* Los diferentes componentes del proyecto (*frontend*, *backend*, *API RESTful*, bases de datos, entre otros) deberán ejecutarse sobre contenedores [Docker](https://www.docker.com/) o desplegarse en un servicio en la nube.
-* Todo el código, *datasets* y la documentación del proyecto debe alojarse en este repositorio de GitHub siguiendo la estructura que aparece a continuación.
-
-### 1.2 Estructura del repositorio
+## 1. Estructura del repositorio
 ```
 - / 			        # Raíz de todo el proyecto
     - README.md			# Archivo con los datos del proyecto (este archivo)
@@ -35,15 +18,6 @@ A continuación se mencionan los requerimientos técnicos mínimos del proyecto,
     - docs			    # Carpeta con la documentación del proyecto
 ```
 
-### 1.3 Documentación  del proyecto
-
-Como parte de la entrega final del proyecto, se debe incluir la siguiente información:
-
-* Justificación de los modelo de *bases de datos* que seleccionaron.
-* Descripción del o los *datasets* y las fuentes de información utilizadas.
-* Guía de configuración, instalación y despliegue de la solución.
-* Documentación de la API (si aplica). Puede ver un ejemplo en [Swagger](https://swagger.io/). 
-* El código debe estar documentado siguiendo los estándares definidos para el lenguaje de programación seleccionado.
 
 ## 2. Descripción del proyecto
 
